@@ -2,7 +2,7 @@
 
 import unittest
 
-from testing_functions import square, cube, addition
+from unit_testing_concept.testing_functions import square, cube, addition
 class TestTime(unittest.TestCase):
     """this class contain unit tests functions to test the imported functions"""
     def test_square(self):
