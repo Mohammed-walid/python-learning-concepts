@@ -16,6 +16,13 @@ class TestTime(unittest.TestCase):
     def test_addition(self):
         """this function tests the addition() function"""
         self.assertEqual(addition(9,9),18)
+        self.assertEqual(addition(2, 4), 6)
+        self.assertEqual(addition(0, 0), 0)
+        self.assertEqual(addition(2.3, 3.6), 5.9)
+        self.assertEqual(addition("hello", "world"), "helloworld")
+        self.assertEqual(addition(2.3000, 4.3000), 6.6)
+        self.assertNotEqual(addition(-2, -2), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
