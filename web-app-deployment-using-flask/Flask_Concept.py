@@ -6,5 +6,6 @@ my_app=flask.Flask(__name__)
 def hello_world():
     return "Hello World"
 
-
-
+@my_app.route("/hello")
+def hello():
+    return "Hello"
