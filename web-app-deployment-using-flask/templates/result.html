@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Greeting</title>
+</head>
+<body>
+
+    <!-- Jinja displays the username variable passed from Flask -->
+    {% if username %}
+        <h1>Hello, {{ username }}!</h1>
+        <p>Welcome back to your dashboard.</p>
+    {% else %}
+        <h1>Hello, Guest!</h1>
+        <p>No username was provided in the request.</p>
+    {% endif %}
+
+</body>
+</html>
