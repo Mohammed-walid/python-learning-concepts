@@ -1,6 +1,6 @@
 """this module is from using flask to run it"""
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 
 my_app=Flask(__name__)
 @my_app.route("/")
@@ -31,3 +31,15 @@ def greet_user_based_on_req():
 @my_app.route("/jason")
 def jason():
     return {"messgae":"Hello world using jason"}
+
+@my_app.route("/health", methods=["GET", "POST"])
+def health():
+    if request.method == "GET":
+        return jsonify(status="OK", method="GET"), 200
+    if request.method == "POST":
+        return jsonify(status="OK", method="POST"), 200
+
+@my_app.route("/server-info")
+def server_info():
+    server_info=request.server
+    return f"The server tuple is: {server_info}"
