@@ -28,3 +28,6 @@ def greet_user_based_on_req():
     user_name = request.args.get("username")
     return render_template("result.html", username=user_name)
 
+@my_app.route("/jason")
+def jason():
+    return {"messgae":"Hello world using jason"}
