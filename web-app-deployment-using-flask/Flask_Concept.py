@@ -1,5 +1,6 @@
 """this module is from using flask to run it"""
-
+import requests
+import escape
 from flask import Flask, request, render_template, jsonify
 
 my_app=Flask(__name__)
@@ -43,3 +44,13 @@ def health():
 def server_info():
     server_info=request.server
     return f"The server tuple is: {server_info}"
+
+@my_app.route("/dynamic")
+def get_author():
+    res = requests.get("https://openlibrary.org/search.json?author=Michael%20Crichton")
+    if res.status_code == 200:
+        return {"message": res.json()}
+    elif res.status_code == 404:
+        return {"message": "Something went wrong!"}, 404
+    else:
+        return {"message": "Server error!"}, 500
