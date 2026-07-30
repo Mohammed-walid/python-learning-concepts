@@ -1,6 +1,6 @@
 """this module is from using flask to run it"""
 import requests
-import escape
+from markupsafe import escape
 from flask import Flask, request, render_template, jsonify
 
 my_app=Flask(__name__)
@@ -51,6 +51,16 @@ def get_author():
     if res.status_code == 200:
         return {"message": res.json()}
     elif res.status_code == 404:
+        return {"message": "Something went wrong!"}, 404
+    else:
+        return {"message": "Server error!"}, 500
+
+@my_app.route("/dynamicRouting/<isbn>")
+def get_isbn(isbn):
+    r=requests.get(f"https://openlibrary.org/isbn/{isbn}.json")
+    if r.status_code==200:
+        return {"message": r.json()}
+    elif r.status_code==404:
         return {"message": "Something went wrong!"}, 404
     else:
         return {"message": "Server error!"}, 500
