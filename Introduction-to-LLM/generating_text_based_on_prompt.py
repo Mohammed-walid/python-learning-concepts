@@ -1,5 +1,4 @@
 """This module is used for generating text based on prompt using Meta Llama"""
-
 from transformers import pipeline
 
 print("Loading the model...")
